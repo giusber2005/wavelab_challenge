@@ -7,7 +7,7 @@ import math
 import sqlite3
 from dotenv import load_dotenv
 
-def set_AI():
+def chargeBot(input,client,assistant,thread):
     load_dotenv()
     api_key = os.getenv('CHATGPT_API_KEY')
     
@@ -51,11 +51,7 @@ def set_AI():
     thread = client.beta.threads.create()
     print("Thread created:", thread.id)
 
-    return client,assistant,thread
 
-
-
-def chargeBot(input,client,assistant,thread):
     # Create a new message (demonstration purposes for now)
     message = client.beta.threads.messages.create(
         thread_id=thread.id,
@@ -158,7 +154,7 @@ def haversine(lat1, lon1, lat2, lon2):
     
     # Calculate the distance
     distance = R * c
-    return round(distance)
+    return round(distance/1000, 2)
 
 # Example usage
 
@@ -177,7 +173,7 @@ def generate_text(data):
             for key, value in details['contact'].items():
                 lines.append(f"  {key}: {value}\n")
             try:
-                lines.append(f"Distance in meters from the EV station: {details['dist']}\n")
+                lines.append(f"Distance in km from the EV station: {details['dist']}\n")
             except:
                 pass
             
