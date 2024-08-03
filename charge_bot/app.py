@@ -4,7 +4,7 @@ from flask_session import Session
 import sqlite3
 from datetime import timedelta
 import atexit
-import schedule
+# import schedule
 import time
 
 
@@ -91,11 +91,11 @@ def refresh_database():
     finally:
         conn.close()
 
-schedule.every(3).hours.do(refresh_database)
+# schedule.every(3).hours.do(refresh_database)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000)
