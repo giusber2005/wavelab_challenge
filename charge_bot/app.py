@@ -45,6 +45,15 @@ def create_app():
 
     @app.route("/")
     def index():
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        
+        cursor.execute("DELETE FROM chat")
+        cursor.execute("DELETE FROM time")
+        
+                    
+        conn.commit()
+        conn.close()
         return render_template("homepage.html")
 
     @app.route("/start_chat_page", methods=["GET", "POST"])
@@ -84,5 +93,9 @@ def create_app():
             conn.close()
         
         return render_template("chat.html")
+    
+    @app.route("/home", methods=["GET", "POST"])
+    def homepage():
+        return redirect("/")
 
     return app

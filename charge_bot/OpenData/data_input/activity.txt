@@ -50,12 +50,12 @@ Contact Information:
   Language: en
 Distance in meters from the EV station: 25778
 
-Name: Night-Run: 3,0 km
+Name: Oswald Run: 7,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
   Language: en
-Distance in meters from the EV station: 2636
+Distance in meters from the EV station: 2663
 
 Name: Castel Flavon/Haselburg Run: 10,9 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
@@ -64,12 +64,12 @@ Contact Information:
   Language: en
 Distance in meters from the EV station: 2636
 
-Name: Oswald Run: 7,3 km
+Name: Night-Run: 3,0 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
   Language: en
-Distance in meters from the EV station: 2663
+Distance in meters from the EV station: 2636
 
 Name: Bridges tour: 6,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
@@ -442,14 +442,14 @@ Distance in meters from the EV station: 2896
 Name: wheather forcast
 Description: weather forcast of the next 3 hours
 Contact Information:
-  Date: 2024-08-03T10:00:00+00:00
-  Temperature: 26.4
+  Date: 2024-08-03T13:00:00+00:00
+  Temperature: 30.0
   PrecipitationProbability: 1
   Precipitation: 0.0
-  WeatherCode: a
-  WeatherDesc: sunny
+  WeatherCode: b
+  WeatherDesc: partly cloudy
   WeatherDescription: None
-  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_1.png
-  WindDirection: 290
-  WindSpeed: 0
+  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
+  WindDirection: 240
+  WindSpeed: 1
 

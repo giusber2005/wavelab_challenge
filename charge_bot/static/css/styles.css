@@ -75,29 +75,60 @@ body {
     }
 }
 
-/* style for the chat.html*/
-.chat-container {
-    width: 400px;
-    max-width: 100%;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Modernize the start button */
+.start-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff6b6b, #ff4757);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
+.start-button:hover {
+    background: linear-gradient(45deg, #ff4757, #ff6b6b);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.start-button:active {
+    background: linear-gradient(45deg, #ff4757, #ff6b6b);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
+/* Modernize the chat container */
+.chat-container {
+    width: 90%;
+    max-width: 600px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: #fff;
+    margin: 40px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Update for the chat-header to ensure it works well with the new container style */
 .chat-header {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
     background-color: #007bff;
     color: #fff;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    position: relative;
 }
+
 
 .chat-messages {
     flex: 1;
@@ -135,6 +166,51 @@ body {
     background-color: #0056b3;
 }
 
+/* Modernize the send button */
+.chat-input button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.chat-input button:active {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
+/* Modernize the search bar */
+.chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.chat-input input:focus {
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+
 .message {
     margin-bottom: 10px;
 }
@@ -156,4 +232,37 @@ body {
     padding: 8px 12px;
     border-radius: 10px;
     display: inline-block;
+}
+
+/* Style for the back button */
+.back-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e60000;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure .chat-header is positioned relatively to position the back button correctly */
+.chat-header {
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }

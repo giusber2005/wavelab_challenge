@@ -1,4 +1,3 @@
-
 {% extends "root.html" %}
 
 {% block title %}
@@ -9,6 +8,7 @@
     <div class="chat-container">
         <div class="chat-header">
             <h2>Chat with ChargeBot</h2>
+            <a href="/home" class="back-button">Home</a>
         </div>
         <div class="chat-messages" id="chatMessages">
             <!-- Messages will be dynamically inserted here -->
@@ -20,5 +20,6 @@
             </form>
         </div>
     </div>
-{% endblock%}
+{% endblock %}
+
 
