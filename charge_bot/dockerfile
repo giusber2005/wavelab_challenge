@@ -10,20 +10,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY . /charge_bot
 
-ENTRYPOINT ["python3"]
-CMD ["app.py"]
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
-FROM builder as dev-envs
+# Define environment variable
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
 
-RUN <<EOF
-apk update
-apk add git
-EOF
-
-RUN <<EOF
-addgroup -S docker
-adduser -S --shell /bin/bash --ingroup docker vscode
-EOF
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
+# Run the application
+CMD ["flask", "run"]
 
