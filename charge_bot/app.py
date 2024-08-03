@@ -77,7 +77,7 @@ def create_app():
             
         return render_template("chat.html")
 
-    @app.route("/chat_page", methods=["GET", "POST"])
+    @app.route("/chat_page", methods=["POST"])
     def chat():
         
         if request.method == "POST":

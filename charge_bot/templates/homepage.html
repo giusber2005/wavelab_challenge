@@ -6,12 +6,13 @@
 
 {% block body %}
     <div class="search-container">
-        <h1>Hi, i'm here to help!</h1>
+        <h1>Hi, i'm here to help you!</h1>
         <form action="/start_chat_page" method="post">
             <input type="text" id="question" name="question" class="search-bar" placeholder="Ask something..." required>
-            <input type="submit" id="submit_button" class="start-button" value="Start chat">
+            <input type="submit" id="submit_button" class="start-button" onclick="showLoadingWheel()" value="Start chat">
         </form>
     </div>
+    <div class="loading-wheel" id="loadingWheel"></div>
     <div class="footer-container">
         <img src="static/images/WL-new-69w.png" alt="Logo">
         <p>Powered by ChargeBot</p>

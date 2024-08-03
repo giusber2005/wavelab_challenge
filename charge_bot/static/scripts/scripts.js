@@ -41,4 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
         console.error('Error:', error);
     });
+
+    function showLoadingWheel() {
+        document.getElementById('loadingWheel').style.display = 'block';
+    }
 });
