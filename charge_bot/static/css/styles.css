@@ -1,0 +1,159 @@
+
+/* style for the homepage.html*/
+body {
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(78, 197, 162); /* Background color */
+    position: relative;
+}
+.search-container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    width: 80%; /* Full width with max limit */
+    max-width: 500px; /* Maximum width */
+    z-index: 1; /* Ensure it stays on top */
+}
+.search-container input[type="text"] {
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Space between input and button */
+}
+.search-container input[type="submit"] {
+    width: 100%; /* Full width */
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Space between logo and text */
+    position: fixed; /* Use fixed positioning */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px; /* Padding for left and right */
+    background: rgba(0, 0, 0, 0.3); /* Optional background */
+    color: #fff;
+    z-index: 2; /* Ensure it stays above other content */
+}
+.footer-container img {
+    width: 80px; /* Adjust size for mobile */
+}
+.footer-container p {
+    margin: 0;
+    font-size: 14px; /* Adjust font size for mobile */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow effect */
+}
+/* Media Queries for Mobile Devices */
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 10px; /* Adjust padding for mobile */
+    }
+    .footer-container img {
+        width: 60px; /* Smaller logo on mobile */
+    }
+    .footer-container p {
+        font-size: 15px; /* Smaller text on mobile */
+    }
+}
+
+/* style for the chat.html*/
+.chat-container {
+    width: 400px;
+    max-width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message.user {
+    text-align: right;
+}
+
+.message.user .message-text {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.message.other .message-text {
+    background-color: #e5e5e5;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
