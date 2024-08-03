@@ -177,7 +177,7 @@ def generate_text(data):
             for key, value in details['contact'].items():
                 lines.append(f"  {key}: {value}\n")
             try:
-                lines.append(f"Distance in meters from the EV station: {details['dist']}\n")
+                lines.append(f"Distance in km from the EV station: {details['dist']}\n")
             except:
                 pass
             
