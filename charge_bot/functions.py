@@ -7,7 +7,7 @@ import math
 import sqlite3
 from dotenv import load_dotenv
 
-def set_AI():
+def chargeBot(input,client,assistant,thread):
     load_dotenv()
     api_key = os.getenv('CHATGPT_API_KEY')
     
@@ -51,11 +51,7 @@ def set_AI():
     thread = client.beta.threads.create()
     print("Thread created:", thread.id)
 
-    return client,assistant,thread
 
-
-
-def chargeBot(input,client,assistant,thread):
     # Create a new message (demonstration purposes for now)
     message = client.beta.threads.messages.create(
         thread_id=thread.id,
