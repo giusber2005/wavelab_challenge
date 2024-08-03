@@ -50,13 +50,6 @@ Contact Information:
   Language: en
 Distance in meters from the EV station: 25778
 
-Name: Oswald Run: 7,3 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in meters from the EV station: 2663
-
 Name: Castel Flavon/Haselburg Run: 10,9 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
@@ -70,6 +63,13 @@ Contact Information:
   Url: http://www.bolzano-bozen.it
   Language: en
 Distance in meters from the EV station: 2636
+
+Name: Oswald Run: 7,3 km
+Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
+Contact Information:
+  Url: http://www.bolzano-bozen.it
+  Language: en
+Distance in meters from the EV station: 2663
 
 Name: Bridges tour: 6,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
