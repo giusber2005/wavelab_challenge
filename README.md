@@ -52,19 +52,18 @@ flowchart LR
     classDef none fill:#fff,stroke:#fff,stroke-width:0px,font-size:0pt;
     class app scope
 ```
-The figure depicts the application architecture in terms of components, data flow (solid links):
+The figure shows the application architecture in terms of components and data flow (solid links):
 
-The application uses up-to-date data from the [Open Data Hub](https://opendatahub.it). Loads the :
-* weather forcast for the next 3 hourse 
+The application uses current data from the [Open Data Hub] (https://opendatahub.it). Loads the :
+* Weather forecast for the next 3 hours 
 * Activity based on the season
-* Events occung during the day 
-* distancese between the EV charging station and the POI
+* Events happening during the day 
+* Distance between EV charging station and POI
 
-The information and collected and stored to create a data set used to perform RAG with the model GPT-4o.
-The Propt for the LLm are tailored such that the models is limited in the hallucination, and do not drive away from the conversation.
-The conversation is stored in a SQlite database to futher fine tune the model with enought user preferences.
+The information is collected and stored to create a data set used to run RAG with the GPT-4o model.
+The props for the LLm are tailored so that the models are limited in the hallucination, and do not drive away from the conversation.
+The conversation is stored in a SQlite database to further fine tune the model with enough user preferences.
 
- 
 ## Licence
 
 MIT
