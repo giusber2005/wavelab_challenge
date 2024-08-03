@@ -140,6 +140,7 @@ body {
 
 .chat-input {
     display: flex;
+    margin-left: auto;
     padding: 10px;
     border-top: 1px solid #ddd;
     background-color: #fff;
@@ -153,22 +154,11 @@ body {
     margin-right: 10px;
 }
 
-.chat-input button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-}
-
-.chat-input button:hover {
-    background-color: #0056b3;
-}
 
 /* Modernize the send button */
 .chat-input button {
     padding: 10px 20px;
+    margin:10px;
     font-size: 16px;
     font-weight: bold;
     color: white;
@@ -221,6 +211,7 @@ body {
 
 .message.user .message-text {
     background-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
     padding: 8px 12px;
     border-radius: 10px;
@@ -229,6 +220,7 @@ body {
 
 .message.other .message-text {
     background-color: #e5e5e5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 8px 12px;
     border-radius: 10px;
     display: inline-block;
@@ -247,12 +239,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 14px;
     font-weight: bold;
-    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .back-button:hover {
     background-color: #e60000;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 /* Ensure .chat-header is positioned relatively to position the back button correctly */
