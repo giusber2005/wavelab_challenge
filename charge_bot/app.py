@@ -2,11 +2,23 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask_session import Session
 import sqlite3
 from datetime import timedelta
-from functions import chargeBot, openData, clear_old_chat_records
+from functions import chargeBot, openData, clear_old_chat_records,set_AI
 from apscheduler.schedulers.background import BackgroundScheduler
+
+client, assistant, thread = None, None, None
+
+def initialize_ai_once():
+    global client, assistant, thread
+    if client is None and assistant is None and thread is None:
+        client, assistant, thread = set_AI()
 
 def create_app():
     app = Flask(__name__)
+
+    
+
+    # Initialize AI variables only once before the first request
+    initialize_ai_once()
 
     # Set up the scheduler
     scheduler = BackgroundScheduler()
@@ -51,7 +63,7 @@ def create_app():
     def start_chat():
         if request.method == "POST":
             question = request.form.get("question")
-            output = chargeBot(question)
+            output = chargeBot(question,client,assistant,thread)
             
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
@@ -68,9 +80,12 @@ def create_app():
 
     @app.route("/chat_page", methods=["GET", "POST"])
     def chat():
+
+        global client,assistant,thread 
+        
         if request.method == "POST":
             question = request.form.get("messageInput")
-            output = chargeBot(question)
+            output = chargeBot(question,client,assistant,thread)
             
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
