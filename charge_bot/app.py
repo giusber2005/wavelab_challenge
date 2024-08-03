@@ -3,6 +3,9 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask_session import Session
 import sqlite3
 from datetime import timedelta
+import atexit
+import schedule
+import time
 
 
 # Configure application
@@ -18,14 +21,13 @@ Session(app)
 # set session to expire after 30 minutes of inactivity
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
-# Connect to the SQLite database
-conn = sqlite3.connect('database.db')
-cursor = conn.cursor()
-
 #endpoint to connect scripts to database
 @app.route("/check-database", methods=["GET"])
 def check_username():
     try:
+        # Connect to the SQLite database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
         # Execute a query to select all rows from the chat table
         cursor.execute("SELECT * FROM chat")
         rows = cursor.fetchall()
@@ -51,19 +53,46 @@ def index():
 
 @app.route("/start_chat_page", methods=["GET", "POST"])
 def start_chat():
+    # Connect to the SQLite database
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    
     question = request.form.get("question")
     #function
     output = "ciao"
-    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", question, output)
+    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
     conn.commit()
-    return render_template("chat.html", output=output)
+    conn.close()
+    return render_template("chat.html")
 
 @app.route("/chat_page", methods=["GET", "POST"])
 def chat():
+    # Connect to the SQLite database
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    
     question = request.form.get("messageInput")
     #function
     output = "ciao"
-    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", question, output)
+    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
     conn.commit()
-    return render_template("chat.html", output=output)
+    conn.close()
+    return render_template("chat.html")
 
+def refresh_database():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    try:
+        # Example refresh operation
+        cursor.execute("DELETE FROM chat")  # Adjust based on your schema
+        conn.commit()
+    except sqlite3.DatabaseError as e:
+        print(f"Database error: {e}")
+    finally:
+        conn.close()
+
+schedule.every(3).hours.do(refresh_database)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
