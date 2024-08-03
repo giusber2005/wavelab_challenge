@@ -1,6 +1,7 @@
 import requests
 import os
 from datetime import datetime,timezone
+import math
 
 def main():
 
@@ -9,22 +10,25 @@ def main():
     date = current_date.strftime('%Y-%m-%d')
     season = get_season(current_date)
 
-    # get location
+    # get location of the EV station
     location = [46.47858328296116,11.332559910750518]
 
+    # get time remaing for full charge
+    time_avilable = 3
+
     # seach new data 
-    good_quality_data = {}
+    good_quality_data = {'Time':time_avilable}
 
     for activity_type in [1,season,8,32,64,128]:
         call_activity = f'https://tourism.api.opendatahub.com/v1/ODHActivityPoi?pagenumber=1&type={activity_type}&active=true&latitude={location[0]}&longitude={location[1]}&radius=3000&removenullvalues=false'
         Activity = requests.get(call_activity)
         Activity = Activity.json()
-        good_quality_data = create_text_acttivity(Activity,good_quality_data)
+        good_quality_data = create_text_acttivity(Activity,location,good_quality_data)
 
     call_event = f'https://tourism.api.opendatahub.com/v1/Event?pagenumber=1&active=true&begindate={date}&enddate={date}&latitude={location[0]}&longitude={location[1]}&radius=3000&removenullvalues=false'
     Event = requests.get(call_event)
     Event = Event.json()
-    good_quality_data = create_text_event(Event,good_quality_data)
+    good_quality_data = create_text_event(Event,location,good_quality_data)
     
     call_meteo = f'https://tourism.api.opendatahub.com/v1/Weather/Forecast?language=en&latitude={location[0]}&longitude={location[1]}&radius=3000'
     Meteo = requests.get(call_meteo)
@@ -73,38 +77,76 @@ def get_season(date):
     else:
         return 2
 
-def create_text_acttivity(activity,good_quality_data:dict):
+def create_text_acttivity(activity,location,good_quality_data:dict):
     if len(activity['Items'])>0:
         for id in range(len(activity['Items'])):
             name = activity['Items'][id]['Detail']['en']['Title']
+            location_act = activity['Items'][id]['GpsInfo'][0]
+            dist = haversine(location[0], location[1], location_act['Latitude'], location_act['Longitude'])
             contact = {}
             for n,content in activity['Items'][id]['ContactInfos']['en'].items():
                 if content!=None:
                     contact[n] = content
             good_quality_data[str(name)] = {'desc':activity['Items'][id]['Detail']['en']['MetaDesc'],
-                                                                                    'contact': contact}
+                                                                                    'contact': contact,
+                                                                                    'dist':dist}
+            
+
     return good_quality_data
 
-def create_text_event(event,good_quality_data):
+def create_text_event(event,location,good_quality_data):
     if len(event['Items'])>0:
         for id in range(len(event['Items'])):
-            name = event['Items'][0]['Detail']['en']['BaseText']
+            name = event['Items'][id]['Detail']['en']['BaseText']
+            location_act = event['Items'][id]['GpsInfo'][0]
+            dist = haversine(location[0], location[1], location_act['Latitude'], location_act['Longitude'])
             contact = {}
             for n,content in event['Items'][id]['ContactInfos']['en'].items():
                 if content!=None:
                     contact[n] = content
             good_quality_data[str(name)] = {'desc':event['Items'][id]['Detail']['en']['MetaDesc'],
-                                                                                    'contact': contact}
+                                                                                    'contact': contact,
+                                                                                    'dist':dist}
     return good_quality_data
+
+def haversine(lat1, lon1, lat2, lon2):
+    # Convert latitude and longitude from degrees to radians
+    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+    
+    # Haversine formula
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+    a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    
+    # Radius of Earth in meters
+    R = 6371000
+    
+    # Calculate the distance
+    distance = R * c
+    return round(distance)
+
+# Example usage
+
+
 
 def generate_text(data):
     lines = []
     for name, details in data.items():
-        lines.append(f"Name: {name}\n")
-        lines.append(f"Description: {details['desc']}\n")
-        lines.append("Contact Information:\n")
-        for key, value in details['contact'].items():
-            lines.append(f"  {key}: {value}\n")
+        
+        if name == 'Time':
+            lines.append(f"Time availabe before the full charge of the car':{details}\n")
+        else:
+            lines.append(f"Name: {name}\n")
+            lines.append(f"Description: {details['desc']}\n")
+            lines.append("Contact Information:\n")
+            for key, value in details['contact'].items():
+                lines.append(f"  {key}: {value}\n")
+            try:
+                lines.append(f"Distance in meters from the EV station: {details['dist']}\n")
+            except:
+                pass
+            
         lines.append("\n")
     return ''.join(lines)
 
