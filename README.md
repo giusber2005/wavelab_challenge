@@ -1,5 +1,5 @@
 # wavelab_challenge
-NOI HACKATHON weblab_challenge
+NOI HACKATHON wavelab_challenge
 
 ## Intro
 
