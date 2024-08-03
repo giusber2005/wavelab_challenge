@@ -158,7 +158,7 @@ def haversine(lat1, lon1, lat2, lon2):
     
     # Calculate the distance
     distance = R * c
-    return round(distance)
+    return round(distance/1000, 2)
 
 # Example usage
 
