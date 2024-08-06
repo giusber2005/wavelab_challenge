@@ -57,43 +57,67 @@ def create_app():
         conn.commit()
         conn.close()
         return render_template("homepage.html")
-
+    
     @app.route("/start_chat_page", methods=["GET", "POST"])
     def start_chat():
         if request.method == "POST":
             question = request.form.get("question")
-            output = chargeBot(question)
             
-            conn = sqlite3.connect('database.db')
-            cursor = conn.cursor()
-            cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
-            chat_id = cursor.lastrowid  # Get the id of the newly inserted chat record
+            if not question:
+                return jsonify({'error': 'Question is required.'}), 400
 
-            # Insert into time table with the chat_id
-            cursor.execute("INSERT INTO time (chat_id) VALUES (?)", (chat_id,))
+            output = chargeBot(question)
+
+            try:
+                with sqlite3.connect('database.db') as conn:
+                    cursor = conn.cursor()
+                    
+                    # Insert into chat table
+                    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
+                    chat_id = cursor.lastrowid
+
+                    # Insert into time table with chat_id
+                    cursor.execute("INSERT INTO time (chat_id) VALUES (?)", (chat_id,))
+                    
+                    conn.commit()
             
-            conn.commit()
-            conn.close()
-            
+            except sqlite3.Error as e:
+                return jsonify({'error': f'An error occurred: {e}'}), 500
+
+            # Return JSON response with redirection URL
+            return jsonify({'redirect': '/start_chat_page', 'message': 'Chat recorded successfully!'})
+
         return render_template("chat.html")
 
-    @app.route("/chat_page", methods=["POST"])
+    @app.route("/chat_page", methods=["POST", "GET"])
     def chat():
         
         if request.method == "POST":
             question = request.form.get("messageInput")
+            
+            if not question:
+                return jsonify({'error': 'Question is required.'}), 400
+            
             output = chargeBot(question)
             
-            conn = sqlite3.connect('database.db')
-            cursor = conn.cursor()
-            cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
-            chat_id = cursor.lastrowid  # Get the id of the newly inserted chat record
+            try:
+                with sqlite3.connect('database.db') as conn:
+                    cursor = conn.cursor()
+                    
+                    # Insert into chat table
+                    cursor.execute("INSERT INTO chat (user, machine) VALUES (?, ?)", (question, output))
+                    chat_id = cursor.lastrowid
 
-            # Insert into time table with the chat_id
-            cursor.execute("INSERT INTO time (chat_id) VALUES (?)", (chat_id,))
+                    # Insert into time table with chat_id
+                    cursor.execute("INSERT INTO time (chat_id) VALUES (?)", (chat_id,))
+                    
+                    conn.commit()
             
-            conn.commit()
-            conn.close()
+            except sqlite3.Error as e:
+                return jsonify({'error': f'An error occurred: {e}'}), 500
+
+            # Return JSON response with redirection URL
+            return jsonify({'redirect': '/chat_page', 'message': 'Chat recorded successfully!'})
         
         return render_template("chat.html")
     

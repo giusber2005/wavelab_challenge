@@ -42,7 +42,50 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error:', error);
     });
 
-    function showLoadingWheel() {
+    document.getElementById('startChatForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+    
+        // Show the spinner
         document.getElementById('loadingWheel').style.display = 'block';
-    }
+        
+        // Prepare the form data
+        const formData = new FormData(this);
+        let route = '';
+
+        let value = document.getElementById('value');
+        if (value.value === "1") {
+            route = '/start_chat_page';
+        } else if (value.value === "2") {
+            route = '/chat_page';
+        }
+        // Create an AJAX request
+        fetch(route, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle the server response
+            return response.json(); // or response.text() if not JSON
+        })
+        .then(data => {
+            // Process the response data
+            console.log('Success:', data);
+            if (data.redirect) {
+                // Redirect to the specified URL
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            // Hide the spinner
+            document.getElementById('loadingWheel').style.display = 'none';
+        });
+    });
+    
 });

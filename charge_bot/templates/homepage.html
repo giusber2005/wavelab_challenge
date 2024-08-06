@@ -7,9 +7,10 @@
 {% block body %}
     <div class="search-container">
         <h1>Hi, i'm here to help you!</h1>
-        <form action="/start_chat_page" method="post">
+        <form action="/start_chat_page" id="startChatForm" method="post">
+            <input type="hidden" id="value" value="1">
             <input type="text" id="question" name="question" class="search-bar" placeholder="Ask something..." required>
-            <input type="submit" id="submit_button" class="start-button" onclick="showLoadingWheel()" value="Start chat">
+            <input type="submit" id="submit_button" class="start-button" value="Start chat">
         </form>
     </div>
     <div class="loading-wheel" id="loadingWheel"></div>
