@@ -57,19 +57,19 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 2.64
 
-Name: Castel Flavon/Haselburg Run: 10,9 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
 Name: Oswald Run: 7,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
   Language: en
 Distance in km from the EV station: 2.66
+
+Name: Castel Flavon/Haselburg Run: 10,9 km
+Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
+Contact Information:
+  Url: http://www.bolzano-bozen.it
+  Language: en
+Distance in km from the EV station: 2.64
 
 Name: Bridges tour: 6,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
@@ -439,17 +439,6 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.7
 
-Name: Conversazione in lingua inglese sul tema della letteratura anglosassone
-Description: None
-Contact Information:
-  City: Bozen/Bolzano
-  Address: Cappuccini street, 28, 39100 Bolzano BZ 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Multilingual Centre
-  CountryCode: IT
-Distance in km from the EV station: 2.44
-
 Name: Un premio per valorizzare e promuovere artiste e artisti visuali che hanno operato sul territorio altoatesino.
 Description: None
 Contact Information:
@@ -461,17 +450,28 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
+Name: Conversazione in lingua inglese sul tema della letteratura anglosassone
+Description: None
+Contact Information:
+  City: Bozen/Bolzano
+  Address: Cappuccini street, 28, 39100 Bolzano BZ 
+  ZipCode: 39100
+  Language: en
+  CompanyName: Multilingual Centre
+  CountryCode: IT
+Distance in km from the EV station: 2.44
+
 Name: wheather forcast
 Description: weather forcast of the next 3 hours
 Contact Information:
-  Date: 2024-08-06T19:00:00+00:00
-  Temperature: 27.7
-  PrecipitationProbability: 15
-  Precipitation: 0.2
-  WeatherCode: b
-  WeatherDesc: partly cloudy
+  Date: 2024-08-07T01:00:00+00:00
+  Temperature: 22.0
+  PrecipitationProbability: 5
+  Precipitation: 0.1
+  WeatherCode: c
+  WeatherDesc: cloudy
   WeatherDescription: None
-  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
-  WindDirection: 235
-  WindSpeed: 1
+  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_3.png
+  WindDirection: 345
+  WindSpeed: 0
 

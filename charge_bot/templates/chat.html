@@ -15,10 +15,12 @@
         </div>
         <div class="chat-input">
             <form action="/chat_page" method="post" id="startChatForm">
-                <div class="loading-wheel" id="loadingWheel"></div>
                 <input type="hidden" id="value" value="2">
                 <input type="text" id="messageInput" name="messageInput" placeholder="Type a message..." required>
                 <button id="sendButton">Send</button>
+                <div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </form>
         </div>
     </div>
