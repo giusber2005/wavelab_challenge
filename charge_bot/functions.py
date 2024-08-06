@@ -28,7 +28,7 @@ def chargeBot(input):
     vector_store = client.beta.vector_stores.create(name="VS")
     
     # Ready the files for upload to OpenAI
-    file_paths = ["./OpenData/data_input/activity.txt"]
+    file_paths = ["./static/data/activity.txt"]
     file_streams = [open(path, "rb") for path in file_paths]
     
     # Use the upload and poll SDK helper to upload the files, add them to the vector store,
@@ -222,7 +222,7 @@ def openData():
     if not os.path.exists('OpenData/data_input'):
         os.makedirs('OpenData/data_input')
 
-    with open('OpenData/data_input/activity.txt', 'w') as file:
+    with open('static/data/activity.txt', 'w') as file:
         file.write(text)
 
     
@@ -231,7 +231,7 @@ def openData():
     if not os.path.exists('OpenData/data_input'):
         os.makedirs('OpenData/data_input')
 
-    with open('OpenData/data_input/activity.txt', 'w') as file:
+    with open('static/data/activity.txt', 'w') as file:
         file.write(text)
         
 # Function to clear old chat records
