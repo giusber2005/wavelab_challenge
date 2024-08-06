@@ -428,17 +428,6 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 0.91
 
-Name: None
-Description: None
-Contact Information:
-  Url: https://www.iceman.it/
-  City: Bolzano/Bozen
-  Address: Via Museo / Museumstraße 43
-  ZipCode: 39100
-  Language: en
-  CountryCode: IT
-Distance in km from the EV station: 2.7
-
 Name: Un premio per valorizzare e promuovere artiste e artisti visuali che hanno operato sul territorio altoatesino.
 Description: None
 Contact Information:
@@ -450,7 +439,7 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
-Name: Conversazione in lingua inglese sul tema della letteratura anglosassone
+Name: Incontro di conversazione in lingua inglese
 Description: None
 Contact Information:
   City: Bozen/Bolzano
@@ -461,17 +450,50 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
+Name: Incontro di conversazione in lingua italiana
+Description: None
+Contact Information:
+  City: Bozen/Bolzano
+  Address: Cappuccini street, 28, 39100 Bolzano BZ 
+  ZipCode: 39100
+  Language: en
+  CompanyName: Multilingual Centre
+  CountryCode: IT
+Distance in km from the EV station: 2.44
+
+Name: Incontro di conversazione in lingua tedesca
+Description: None
+Contact Information:
+  City: Bozen/Bolzano
+  Address: Cappuccini street, 28, 39100 Bolzano BZ 
+  ZipCode: 39100
+  Language: en
+  CompanyName: Multilingual Centre
+  CountryCode: IT
+Distance in km from the EV station: 2.44
+
+Name: None
+Description: None
+Contact Information:
+  Url: https://www.provincia.bz.it/premiopierosiena
+  City: Bozen /Bolzano
+  Address: Kapuzinergasse /via Cappuccini
+  ZipCode: 39100
+  Language: en
+  CountryCode: IT
+Distance in km from the EV station: 2.47
+
 Name: wheather forcast
 Description: weather forcast of the next 3 hours
 Contact Information:
-  Date: 2024-08-07T01:00:00+00:00
-  Temperature: 22.0
-  PrecipitationProbability: 5
-  Precipitation: 0.1
+  Date: 2024-08-07T04:00:00+00:00
+  Temperature: 21.7
+  PrecipitationProbability: 1
+  Precipitation: 0.0
   WeatherCode: c
   WeatherDesc: cloudy
   WeatherDescription: None
   WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_3.png
-  WindDirection: 345
-  WindSpeed: 0
+  WindDirection: 30
+  WindSpeed: 1
 

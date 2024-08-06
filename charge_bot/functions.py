@@ -52,7 +52,7 @@ def chargeBot(input):
     print("Thread created:", thread.id)
 
 
-    # Create a new message (demonstration purposes for now)
+    # Create a new message
     message = client.beta.threads.messages.create(
         thread_id=thread.id,
         role="user",
@@ -156,10 +156,6 @@ def haversine(lat1, lon1, lat2, lon2):
     distance = R * c
     return round(distance/1000, 2)
 
-# Example usage
-
-
-
 def generate_text(data):
     lines = []
     for name, details in data.items():
@@ -217,19 +213,6 @@ def openData():
 
 
     text = generate_text(good_quality_data)
-
-    # create output folder
-    if not os.path.exists('OpenData/data_input'):
-        os.makedirs('OpenData/data_input')
-
-    with open('static/data/activity.txt', 'w') as file:
-        file.write(text)
-
-    
-
-    # create output folder
-    if not os.path.exists('OpenData/data_input'):
-        os.makedirs('OpenData/data_input')
 
     with open('static/data/activity.txt', 'w') as file:
         file.write(text)

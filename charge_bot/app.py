@@ -61,10 +61,14 @@ def create_app():
     @app.route("/start_chat_page", methods=["GET", "POST"])
     def start_chat():
         if request.method == "POST":
-            question = request.form.get("question")
-            
-            if not question:
-                return jsonify({'error': 'Question is required.'}), 400
+            if request.files['audioStorage']:
+                #insert code to convert the audio file in text
+                print("ciao")
+            else:
+                question = request.form.get("question")
+                
+                if not question:
+                    return jsonify({'error': 'Question is required.'}), 400
 
             output = chargeBot(question)
 

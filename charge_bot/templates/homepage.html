@@ -7,15 +7,26 @@
 {% block body %}
     <div class="search-container">
         <h1>Hi, i'm here to help you!</h1>
-        <form action="/start_chat_page" id="startChatForm" method="post">
+        <form action="/start_chat_page" class="startChatForm" method="post">
             <input type="hidden" id="value" value="1">
             <input type="text" id="question" name="question" class="search-bar" placeholder="Ask something..." required>
             <input type="submit" id="submit_button" class="start-button" value="Start chat">
         </form>
+        <button id="recordButton" class="start-button" style="margin: 10px"> Start recording </button>
     </div>
+
+    <button id="stopButton" class="start-button" style="display: none; margin: 20px"> Stop recording </button>
+
+    <form enctype="multipart/form-data" action="/start_chat_page" id="audioForm" class="startChatForm" method="post" style="display: none; margin: 20px">
+        <input type="hidden" id="value" value="1">
+        <input type="file" id="audioStorage" name="audioStorage" accept="audio/*" style="display: none">
+        <input type="submit" id="submit_button" class="start-button" value="Send audio">
+    </form>
+
     <div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
         <span class="sr-only">Loading...</span>
     </div>
+
     <div class="footer-container">
         <img src="static/images/WL-new-69w.png" alt="Logo">
         <p>Powered by ChargeBot</p>
