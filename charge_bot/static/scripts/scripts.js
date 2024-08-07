@@ -120,10 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
             mediaRecorder.onstop = () => {
                 document.getElementById('audioForm').style.display = 'block';
                 document.getElementById('loadingWheel').style.display = 'none';
-
+                
                 const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                 const audioUrl = URL.createObjectURL(audioBlob);
-                document.getElementById('audioStorage').src = audioUrl;
+
+                document.getElementById('audioPlayback').src = audioUrl;
+
+                // Create a File object from the Blob
+                const audioFile = new File([audioBlob], 'recordedAudio.wav', { type: 'audio/wav' });
+
+                // Trigger form file input change event
+                const fileInput = document.getElementById('audioStorage');
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(audioFile);
+                fileInput.files = dataTransfer.files;
             };
 
             mediaRecorder.start();

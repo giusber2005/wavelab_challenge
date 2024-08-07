@@ -6,10 +6,21 @@ from functions import chargeBot, openData, clear_old_chat_records
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
+import os
+from werkzeug.utils import secure_filename
+
+
 def create_app():
     app = Flask(__name__)
 
-
+    # Define the upload folder in the configuration
+    app.config['AUDIO_FOLDER'] = 'static/data/audio_files'
+    app.config['TXT_FOLDER'] = 'static/data/txt_files'
+    
+    # Ensure the upload folders exist
+    os.makedirs(app.config['AUDIO_FOLDER'], exist_ok=True)
+    os.makedirs(app.config['TXT_FOLDER'], exist_ok=True)
+    
     # Set up the scheduler
     scheduler = BackgroundScheduler()
     scheduler.add_job(func=clear_old_chat_records, trigger="interval", hours=1)  # Runs every hour
@@ -32,7 +43,7 @@ def create_app():
     
     # Define your routes
     @app.route("/check-database", methods=["GET"])
-    def check_username():
+    def check_database():
         try:
             conn = sqlite3.connect('database.db')
             cursor = conn.cursor()
@@ -61,16 +72,30 @@ def create_app():
     @app.route("/start_chat_page", methods=["GET", "POST"])
     def start_chat():
         if request.method == "POST":
-            if request.files['audioStorage']:
+            if 'audioStorage' in request.files:
                 #insert code to convert the audio file in text
-                print("ciao")
+                question = request.files['audioStorage']
+                
+                if question.filename == '':
+                    return jsonify(message='No selected file'), 400
+                
+                audio_mime_types = ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp4']
+        
+                if question.content_type in audio_mime_types:
+                    filename = secure_filename(question.filename)
+                    question.save(os.path.join(app.config['AUDIO_FOLDER'], filename))
+                else:
+                    return jsonify(message='Invalid file type'), 400
+                
+                output = chargeBot(question)
+                question = filename
             else:
                 question = request.form.get("question")
                 
                 if not question:
                     return jsonify({'error': 'Question is required.'}), 400
-
-            output = chargeBot(question)
+                
+                output = chargeBot(question)
 
             try:
                 with sqlite3.connect('database.db') as conn:

@@ -7,7 +7,7 @@
 {% block body %}
     <div class="search-container">
         <h1>Hi, i'm here to help you!</h1>
-        <form action="/start_chat_page" class="startChatForm" method="post">
+        <form enctype="multipart/form-data" action="/start_chat_page" class="startChatForm" method="post">
             <input type="hidden" id="value" value="1">
             <input type="text" id="question" name="question" class="search-bar" placeholder="Ask something..." required>
             <input type="submit" id="submit_button" class="start-button" value="Start chat">
@@ -22,6 +22,8 @@
         <input type="file" id="audioStorage" name="audioStorage" accept="audio/*" style="display: none">
         <input type="submit" id="submit_button" class="start-button" value="Send audio">
     </form>
+
+    <audio id="audioPlayback" controls></audio>
 
     <div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
         <span class="sr-only">Loading...</span>

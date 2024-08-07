@@ -50,7 +50,18 @@ def chargeBot(input):
     # Create a new thread for communicating with the model
     thread = client.beta.threads.create()
     print("Thread created:", thread.id)
+    
+    #check if the input is text or is an audio file 
+    if not isinstance(input, str):
+        if input.content_type in ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp4']:
+            #insert code for converting the audio file in txt 
+            response = client.audio.transcriptions.create(
+                file=open(os.path.join('static/data/audio_files', input.filename), "rb"),
+                model="whisper-1"
+            )
 
+            input = response.text
+    
 
     # Create a new message
     message = client.beta.threads.messages.create(

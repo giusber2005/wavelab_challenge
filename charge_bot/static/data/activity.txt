@@ -50,7 +50,7 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 25.78
 
-Name: Night-Run: 3,0 km
+Name: Castel Flavon/Haselburg Run: 10,9 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
@@ -64,7 +64,7 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 2.66
 
-Name: Castel Flavon/Haselburg Run: 10,9 km
+Name: Night-Run: 3,0 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
@@ -450,7 +450,7 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
-Name: Incontro di conversazione in lingua italiana
+Name: Incontro di conversazione in lingua tedesca
 Description: None
 Contact Information:
   City: Bozen/Bolzano
@@ -461,7 +461,7 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
-Name: Incontro di conversazione in lingua tedesca
+Name: Incontro di conversazione in lingua italiana
 Description: None
 Contact Information:
   City: Bozen/Bolzano
@@ -486,14 +486,14 @@ Distance in km from the EV station: 2.47
 Name: wheather forcast
 Description: weather forcast of the next 3 hours
 Contact Information:
-  Date: 2024-08-07T04:00:00+00:00
-  Temperature: 21.7
-  PrecipitationProbability: 1
-  Precipitation: 0.0
-  WeatherCode: c
-  WeatherDesc: cloudy
+  Date: 2024-08-07T19:00:00+00:00
+  Temperature: 26.3
+  PrecipitationProbability: 20
+  Precipitation: 0.3
+  WeatherCode: d
+  WeatherDesc: very cloudy
   WeatherDescription: None
-  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_3.png
-  WindDirection: 30
-  WindSpeed: 1
+  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_4.png
+  WindDirection: 0
+  WindSpeed: 0
 
