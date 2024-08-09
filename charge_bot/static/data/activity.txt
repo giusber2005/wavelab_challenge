@@ -50,19 +50,19 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 25.78
 
-Name: Castel Flavon/Haselburg Run: 10,9 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
 Name: Oswald Run: 7,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
   Language: en
 Distance in km from the EV station: 2.66
+
+Name: Castel Flavon/Haselburg Run: 10,9 km
+Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
+Contact Information:
+  Url: http://www.bolzano-bozen.it
+  Language: en
+Distance in km from the EV station: 2.64
 
 Name: Night-Run: 3,0 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
@@ -428,6 +428,17 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 0.91
 
+Name: None
+Description: None
+Contact Information:
+  Url: http://www.bolzano-bozen.it/en/guided-travel-guides.htm
+  City: Bolzano Bozen
+  Address: piazza del Grano - Kornplatz 11
+  ZipCode: 39100
+  Language: en
+  CountryCode: IT
+Distance in km from the EV station: 2.53
+
 Name: Un premio per valorizzare e promuovere artiste e artisti visuali che hanno operato sul territorio altoatesino.
 Description: None
 Contact Information:
@@ -439,7 +450,7 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
-Name: Incontro di conversazione in lingua inglese
+Name: Incontri di conversazione individuali in lingua spagnola
 Description: None
 Contact Information:
   City: Bozen/Bolzano
@@ -450,50 +461,17 @@ Contact Information:
   CountryCode: IT
 Distance in km from the EV station: 2.44
 
-Name: Incontro di conversazione in lingua tedesca
-Description: None
+Name: wheather forecast
+Description: weather forecast of the next 3 hours
 Contact Information:
-  City: Bozen/Bolzano
-  Address: Cappuccini street, 28, 39100 Bolzano BZ 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Multilingual Centre
-  CountryCode: IT
-Distance in km from the EV station: 2.44
-
-Name: Incontro di conversazione in lingua italiana
-Description: None
-Contact Information:
-  City: Bozen/Bolzano
-  Address: Cappuccini street, 28, 39100 Bolzano BZ 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Multilingual Centre
-  CountryCode: IT
-Distance in km from the EV station: 2.44
-
-Name: None
-Description: None
-Contact Information:
-  Url: https://www.provincia.bz.it/premiopierosiena
-  City: Bozen /Bolzano
-  Address: Kapuzinergasse /via Cappuccini
-  ZipCode: 39100
-  Language: en
-  CountryCode: IT
-Distance in km from the EV station: 2.47
-
-Name: wheather forcast
-Description: weather forcast of the next 3 hours
-Contact Information:
-  Date: 2024-08-07T19:00:00+00:00
-  Temperature: 26.3
-  PrecipitationProbability: 20
-  Precipitation: 0.3
-  WeatherCode: d
-  WeatherDesc: very cloudy
+  Date: 2024-08-09T22:00:00+00:00
+  Temperature: 26.1
+  PrecipitationProbability: 5
+  Precipitation: 0.1
+  WeatherCode: b
+  WeatherDesc: partly cloudy
   WeatherDescription: None
-  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_4.png
-  WindDirection: 0
+  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
+  WindDirection: 20
   WindSpeed: 0
 

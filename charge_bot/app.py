@@ -116,7 +116,7 @@ def create_app():
             # Return JSON response with redirection URL
             return jsonify({'redirect': '/start_chat_page', 'message': 'Chat recorded successfully!'})
 
-        return render_template("chat.html")
+        return redirect("/chat_page")
 
     @app.route("/chat_page", methods=["POST", "GET"])
     def chat():

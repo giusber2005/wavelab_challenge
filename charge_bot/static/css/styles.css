@@ -75,6 +75,10 @@ body {
     }
 }
 
+#audioButtons {
+    display: flex;
+    gap: 20px;
+}
 /* Modernize the start button */
 .start-button {
     padding: 10px 20px;

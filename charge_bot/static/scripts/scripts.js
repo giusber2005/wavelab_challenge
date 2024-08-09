@@ -46,13 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startChatForms.forEach(startChatForm => {
         startChatForm.addEventListener('submit', function(event) {
+            //prevents the default form submission, allowing custom handling of the form data
             event.preventDefault(); // Prevent the default form submission
         
             // Show the spinner
             document.getElementById('loadingWheel').style.display = 'block';
             
             // Prepare the form data
+            //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
+            //empty variable to store the URL to which the request will be sent
             let route = '';
     
             let value = document.getElementById('value');
@@ -64,17 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create an AJAX request
             fetch(route, {
                 method: 'POST',
+                //the formData is sent to the route with method POST
+                //the data is being processed by the route functions without the refreshing of the page
                 body: formData
             })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+
                 // Handle the server response
                 return response.json(); // or response.text() if not JSON
             })
             .then(data => {
-                // Process the response data
+                // Process the response data (the return value of the response part)
                 console.log('Success:', data);
                 if (data.redirect) {
                     // Redirect to the specified URL
@@ -99,55 +105,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let stopButton = document.getElementById('stopButton');
 
-    //on blick of the recordButton:
-    //ask permission for recording the audio
-    //record the audio and store it in the file input inside the fileStorage input
-    document.getElementById('recordButton').addEventListener('click', async () => {
+    const startAgainButtons = document.querySelectorAll('.audioStarter');
 
-        // Request microphone access
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            mediaRecorder = new MediaRecorder(stream);
+    startAgainButtons.forEach(button => {
+        //on click of the recordButton (or of the againButton):
+        //ask permission for recording the audio
+        //record the audio and store it in the file input inside the fileStorage input
+        button.addEventListener('click', async () => {
 
-            stopButton.style.display = 'block';
-            document.getElementById('recordButton').disabled = true;
-            document.getElementById('loadingWheel').style.display = 'block';
+            // Request microphone access
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
 
-            mediaRecorder.ondataavailable = (event) => {
-                audioChunks.push(event.data);
-            };
+                stopButton.style.display = 'block';
+                document.getElementById('recordButton').disabled = true;
+                document.getElementById('loadingWheel').style.display = 'block';
 
-            mediaRecorder.onstop = () => {
-                document.getElementById('audioForm').style.display = 'block';
-                document.getElementById('loadingWheel').style.display = 'none';
-                
-                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                const audioUrl = URL.createObjectURL(audioBlob);
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
 
-                document.getElementById('audioPlayback').src = audioUrl;
+                mediaRecorder.onstop = () => {
+                    document.getElementById('audioForm').style.display = 'block';
+                    document.getElementById('loadingWheel').style.display = 'none';
+                    
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
 
-                // Create a File object from the Blob
-                const audioFile = new File([audioBlob], 'recordedAudio.wav', { type: 'audio/wav' });
+                    var audio = document.createElement('audio');
+                    audio.controls = true;
 
-                // Trigger form file input change event
-                const fileInput = document.getElementById('audioStorage');
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(audioFile);
-                fileInput.files = dataTransfer.files;
-            };
+                    var container = document.getElementById('audioContainer');
+                    container.innerHTML = ''; // Clear any previous content
+                    container.appendChild(audio);
 
-            mediaRecorder.start();
-            console.log('Recording started');
-        } catch (error) {
-            console.error('Error accessing microphone:', error);
-        }
+                    var audioPlayer = container.querySelector('audio');
+
+                    audioPlayer.src = audioUrl;
+                    audioPlayer.load();
+
+                    // Create a File object from the Blob
+                    const audioFile = new File([audioBlob], 'recordedAudio.wav', { type: 'audio/wav' });
+
+                    // Trigger form file input change event
+                    const fileInput = document.getElementById('audioStorage');
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(audioFile);
+                    fileInput.files = dataTransfer.files;
+                };
+
+                mediaRecorder.start();
+                console.log('Recording started');
+            } catch (error) {
+                console.error('Error accessing microphone:', error);
+            }
+        });
     });
 
-    document.getElementById('stopButton').addEventListener('click', () => {
+    var button = document.getElementById('stopButton');
+
+    button.addEventListener('click', () => {
+        button.style.display = 'none';
+        document.getElementById("againButton").style.display = 'block';
+
         if (mediaRecorder) {
             mediaRecorder.stop();
             console.log('Recording stopped');
         }
     });
-
 });

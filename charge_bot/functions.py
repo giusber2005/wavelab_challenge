@@ -109,6 +109,12 @@ def get_season(date):
     winter = datetime(date.year, 12, 21)
     
     # Compare the current date to the start dates of the seasons
+    if spring <= date < fall:
+        return 4
+    elif fall <= date < spring:
+        return 2
+    """
+    PREVIOUS FUNCTION
     if spring <= date < summer:
         return 4
     elif summer <= date < fall:
@@ -117,11 +123,17 @@ def get_season(date):
         return 2
     else:
         return 2
+    
+    """
 
-def create_text_acttivity(activity,location,good_quality_data:dict):
+
+def create_text_actEv(activity,location,good_quality_data:dict, key):
     if len(activity['Items'])>0:
         for id in range(len(activity['Items'])):
-            name = activity['Items'][id]['Detail']['en']['Title']
+            try:
+                name = activity['Items'][id]['Detail']['en'][key]  #'Title' #'BaseText'
+            except KeyError:
+                continue
             location_act = activity['Items'][id]['GpsInfo'][0]
             dist = haversine(location[0], location[1], location_act['Latitude'], location_act['Longitude'])
             contact = {}
@@ -133,21 +145,6 @@ def create_text_acttivity(activity,location,good_quality_data:dict):
                                                                                     'dist':dist}
             
 
-    return good_quality_data
-
-def create_text_event(event,location,good_quality_data):
-    if len(event['Items'])>0:
-        for id in range(len(event['Items'])):
-            name = event['Items'][id]['Detail']['en']['BaseText']
-            location_act = event['Items'][id]['GpsInfo'][0]
-            dist = haversine(location[0], location[1], location_act['Latitude'], location_act['Longitude'])
-            contact = {}
-            for n,content in event['Items'][id]['ContactInfos']['en'].items():
-                if content!=None:
-                    contact[n] = content
-            good_quality_data[str(name)] = {'desc':event['Items'][id]['Detail']['en']['MetaDesc'],
-                                                                                    'contact': contact,
-                                                                                    'dist':dist}
     return good_quality_data
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -198,21 +195,21 @@ def openData():
     location = [46.47858328296116,11.332559910750518]
 
     # get time remaing for full charge
-    time_avilable = 3
+    time_available = 3
 
     # seach new data 
-    good_quality_data = {'Time':time_avilable}
+    good_quality_data = {'Time':time_available}
 
     for activity_type in [1,season,8,32,64,128]:
         call_activity = f'https://tourism.api.opendatahub.com/v1/ODHActivityPoi?pagenumber=1&type={activity_type}&active=true&latitude={location[0]}&longitude={location[1]}&radius=3000&removenullvalues=false'
         Activity = requests.get(call_activity)
         Activity = Activity.json()
-        good_quality_data = create_text_acttivity(Activity,location,good_quality_data)
+        good_quality_data = create_text_actEv(Activity,location,good_quality_data, 'Title')
 
     call_event = f'https://tourism.api.opendatahub.com/v1/Event?pagenumber=1&active=true&begindate={date}&enddate={date}&latitude={location[0]}&longitude={location[1]}&radius=3000&removenullvalues=false'
     Event = requests.get(call_event)
     Event = Event.json()
-    good_quality_data = create_text_event(Event,location,good_quality_data)
+    good_quality_data = create_text_actEv(Event,location,good_quality_data, 'BaseText')
     
     call_meteo = f'https://tourism.api.opendatahub.com/v1/Weather/Forecast?language=en&latitude={location[0]}&longitude={location[1]}&radius=3000'
     Meteo = requests.get(call_meteo)
@@ -220,7 +217,7 @@ def openData():
     # Extract the next two entries with dates after the current date
     filtered_data = [entry for entry in Meteo[0]['Forecast3HoursInterval'] if datetime.strptime(entry['Date'], '%Y-%m-%dT%H:%M:%S%z') > datetime.now(timezone.utc)]
     # Limit to the next two entries
-    good_quality_data['wheather forcast'] = {'desc': 'weather forcast of the next 3 hours','contact':filtered_data[1]}
+    good_quality_data['wheather forecast'] = {'desc': 'weather forecast of the next 3 hours','contact':filtered_data[1]}
 
 
     text = generate_text(good_quality_data)
