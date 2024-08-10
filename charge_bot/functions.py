@@ -1,5 +1,8 @@
 from openai import OpenAI
+
+#libraries to convert the markdown to plain text
 import markdown
+
 import requests
 import os
 from datetime import datetime,timezone,timedelta
@@ -95,8 +98,9 @@ def chargeBot(input):
     for message in reversed(messages.data):
         if message.role == "assistant":
             print(message.role + " : " + message.content[0].text.value)
-            html = markdown.markdown(message.content[0].text.value)
+            html = markdown.markdown(message.content[0].text.value)                
             return html
+            
             
     return None
 

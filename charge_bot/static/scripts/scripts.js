@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     //updating the chat with new messages
@@ -9,6 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${user ? 'user' : 'other'}`;
         messageDiv.innerHTML = `<div class="message-text">${text}</div>`;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+    }
+
+    function addAudioMessage(filename, user = true) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${user ? 'user' : 'other'}`;
+        messageDiv.innerHTML = `<audio controls class="message-text message-audio">
+                                    <source src="/audio_folder/${filename}" type="audio/wav">
+                                </audio>`;
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
     }
@@ -31,8 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Populate chatMessages with entries from chatDataArray
         chatDataArray.forEach(entry => {
             const text = `${entry.user}`;
-            // Assuming user flag can be determined based on some logic, for now set as true for all
-            addMessage(text, true);
+            if (text.endsWith(".wav")) {
+                addAudioMessage(text, true);
+            } else {
+                // Assuming user flag can be determined based on some logic, for now set as true for all
+                addMessage(text, true);
+            }
 
             const text2 = `${entry.machine}`;
             addMessage(text2, false);
@@ -42,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error:', error);
     });
 
-    const startChatForms =  document.querySelectorAll('startChatForm');
+    const startChatForms =  document.querySelectorAll('.startChatForm');
 
     startChatForms.forEach(startChatForm => {
         startChatForm.addEventListener('submit', function(event) {
@@ -51,7 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
             // Show the spinner
             document.getElementById('loadingWheel').style.display = 'block';
-            
+                            
+            document.getElementById('audioForm').style.display = 'none';
+            document.getElementById("againButton").style.display = 'none';
+            document.getElementById("delButton").style.display = 'none';
+            document.getElementById('audioPlayer').style.display = 'none';
+
             // Prepare the form data
             //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
@@ -100,11 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     //function to start recording audio
-    let mediaRecorder;
-    let audioChunks = [];
-
+    let mediaRecorder
     let stopButton = document.getElementById('stopButton');
-
     const startAgainButtons = document.querySelectorAll('.audioStarter');
 
     startAgainButtons.forEach(button => {
@@ -112,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
         //ask permission for recording the audio
         //record the audio and store it in the file input inside the fileStorage input
         button.addEventListener('click', async () => {
+            let audioChunks = [];
+            document.getElementById("recordButton").style.display = 'none';
+            document.getElementById("againButton").style.display = 'none';
 
             // Request microphone access
             try {
@@ -121,6 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 stopButton.style.display = 'block';
                 document.getElementById('recordButton').disabled = true;
                 document.getElementById('loadingWheel').style.display = 'block';
+                document.getElementById("delButton").style.display = 'none';
+                document.getElementById('audioForm').style.display = 'none';
 
                 mediaRecorder.ondataavailable = (event) => {
                     audioChunks.push(event.data);
@@ -133,20 +155,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const audioUrl = URL.createObjectURL(audioBlob);
 
-                    var audio = document.createElement('audio');
-                    audio.controls = true;
-
-                    var container = document.getElementById('audioContainer');
-                    container.innerHTML = ''; // Clear any previous content
-                    container.appendChild(audio);
-
-                    var audioPlayer = container.querySelector('audio');
+                    var audioPlayer = document.getElementById('audioPlayer');
 
                     audioPlayer.src = audioUrl;
                     audioPlayer.load();
 
+                    var filename = 'recordedAudio_' + Math.random().toString(36).substr(2, 8) + ".wav";
+
                     // Create a File object from the Blob
-                    const audioFile = new File([audioBlob], 'recordedAudio.wav', { type: 'audio/wav' });
+                    const audioFile = new File([audioBlob], filename, { type: 'audio/wav' });
 
                     // Trigger form file input change event
                     const fileInput = document.getElementById('audioStorage');
@@ -163,15 +180,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    var button = document.getElementById('stopButton');
-
-    button.addEventListener('click', () => {
-        button.style.display = 'none';
+    stopButton.addEventListener('click', () => {
+        stopButton.style.display = 'none';
         document.getElementById("againButton").style.display = 'block';
+        document.getElementById("delButton").style.display = 'block';
+        document.getElementById('audioPlayer').style.display = 'block';
+
 
         if (mediaRecorder) {
             mediaRecorder.stop();
             console.log('Recording stopped');
         }
     });
+
+    var delButton = document.getElementById("delButton");
+
+    delButton.addEventListener('click', () => {
+        // Hide the delete button
+        delButton.style.display = 'none';
+
+        document.getElementById("againButton").style.display = 'none';
+        document.getElementById('audioForm').style.display = 'none';
+        document.getElementById("recordButton").style.display = 'inline-block';
+        document.getElementById("recordButton").disabled = false; 
+        document.getElementById('audioPlayer').style.display = 'none';
+
+        // Clear the audio player source
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.src = '';
+        audioPlayer.load();
+    
+        // Clear the file input
+        const fileInput = document.getElementById('audioStorage');
+        fileInput.value = '';  // Clearing the file input value
+    });
+    
 });

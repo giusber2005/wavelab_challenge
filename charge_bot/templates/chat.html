@@ -18,12 +18,31 @@
                 <input type="hidden" id="value" value="2">
                 <input type="text" id="messageInput" name="messageInput" placeholder="Type a message..." required>
                 <button id="sendButton">Send</button>
-                <div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
-                    <span class="sr-only">Loading...</span>
-                </div>
             </form>
         </div>
+
     </div>
+    <div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <button id="recordButton" class="start-button audioStarter" style="margin: 10px"> Start recording </button>
+
+    <button id="stopButton" class="start-button" style="display: none; margin: 10px"> Stop recording </button>
+    
+    <div id="audioButtons">
+        <button id="againButton" class="start-button audioStarter" style="display:none; margin: 10px"> Record again </button>
+
+        <button id="delButton" class="start-button" style="display: none; margin: 10px"> Delete recording </button>
+
+        <form enctype="multipart/form-data" action="/start_chat_page" id="audioForm" class="startChatForm" method="post" style="display: none">
+            <input type="hidden" id="value" value="1">
+            <input type="file" id="audioStorage" name="audioStorage" accept="audio/*" style="display: none">
+            <input type="submit" id="submit_button" class="start-button" value="Send audio" style="margin: 10px">
+        </form>
+    </div>
+
+    <audio id="audioPlayer" controls style="margin: 10px"></audio>
 {% endblock %}
 
 

@@ -55,9 +55,16 @@ def create_app():
         
         except sqlite3.Error as e:
             return jsonify({"error": str(e)}), 500
-
+        
+    @app.route("/audio_folder/<filename>", methods=["GET"])
+    def audio_folder(filename):
+        
+        # Serve the file from the AUDIO_FOLDER directory
+        return send_from_directory(app.config['AUDIO_FOLDER'], filename)
+            
     @app.route("/")
     def index():
+        #delete all from the database
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         
@@ -67,6 +74,15 @@ def create_app():
                     
         conn.commit()
         conn.close()
+        
+        #delete all from the audio_folder
+        for filename in os.listdir(app.config['AUDIO_FOLDER']):
+            file_path = os.path.join(app.config['AUDIO_FOLDER'], filename)
+            
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+                print(f"Deleted file: {file_path}")
+                
         return render_template("homepage.html")
     
     @app.route("/start_chat_page", methods=["GET", "POST"])
@@ -122,11 +138,29 @@ def create_app():
     def chat():
         
         if request.method == "POST":
-            question = request.form.get("messageInput")
-            
-            if not question:
-                return jsonify({'error': 'Question is required.'}), 400
-            
+            if 'audioStorage' in request.files:
+                #insert code to convert the audio file in text
+                question = request.files['audioStorage']
+                
+                if question.filename == '':
+                    return jsonify(message='No selected file'), 400
+                
+                audio_mime_types = ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp4']
+        
+                if question.content_type in audio_mime_types:
+                    filename = secure_filename(question.filename)
+                    question.save(os.path.join(app.config['AUDIO_FOLDER'], filename))
+                else:
+                    return jsonify(message='Invalid file type'), 400
+                
+                output = chargeBot(question)
+                question = filename
+            else:
+                question = request.form.get("question")
+                
+                if not question:
+                    return jsonify({'error': 'Question is required.'}), 400
+                
             output = chargeBot(question)
             
             try:

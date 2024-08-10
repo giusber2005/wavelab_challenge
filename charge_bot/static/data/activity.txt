@@ -431,47 +431,25 @@ Distance in km from the EV station: 0.91
 Name: None
 Description: None
 Contact Information:
-  Url: http://www.bolzano-bozen.it/en/guided-travel-guides.htm
-  City: Bolzano Bozen
-  Address: piazza del Grano - Kornplatz 11
+  Url: https://www.bolzano-bozen.it/it/content/eventi.html
+  City: Bolzano/Bozen
+  Address: Piazza Municipio/Rathausplatz
   ZipCode: 39100
   Language: en
   CountryCode: IT
-Distance in km from the EV station: 2.53
-
-Name: Un premio per valorizzare e promuovere artiste e artisti visuali che hanno operato sul territorio altoatesino.
-Description: None
-Contact Information:
-  City: Bozen/Bolzano
-  Address: Cappuccini street, 28, 39100 Bolzano BZ 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Lab 1 - EN
-  CountryCode: IT
-Distance in km from the EV station: 2.44
-
-Name: Incontri di conversazione individuali in lingua spagnola
-Description: None
-Contact Information:
-  City: Bozen/Bolzano
-  Address: Cappuccini street, 28, 39100 Bolzano BZ 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Multilingual Centre
-  CountryCode: IT
-Distance in km from the EV station: 2.44
+Distance in km from the EV station: 2.98
 
 Name: wheather forecast
 Description: weather forecast of the next 3 hours
 Contact Information:
-  Date: 2024-08-09T22:00:00+00:00
-  Temperature: 26.1
-  PrecipitationProbability: 5
-  Precipitation: 0.1
+  Date: 2024-08-10T19:00:00+00:00
+  Temperature: 33.2
+  PrecipitationProbability: 1
+  Precipitation: 0.0
   WeatherCode: b
   WeatherDesc: partly cloudy
   WeatherDescription: None
   WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
-  WindDirection: 20
-  WindSpeed: 0
+  WindDirection: 195
+  WindSpeed: 1
 
