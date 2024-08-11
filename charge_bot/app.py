@@ -136,7 +136,6 @@ def create_app():
 
     @app.route("/chat_page", methods=["POST", "GET"])
     def chat():
-        
         if request.method == "POST":
             if 'audioStorage' in request.files:
                 #insert code to convert the audio file in text
