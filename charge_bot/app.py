@@ -134,7 +134,7 @@ def create_app():
 
         return redirect("/chat_page")
 
-    @app.route("/chat_page", methods=["POST", "GET"])
+    @app.route("/chat_page", methods=["GET", "POST"])
     def chat():
         if request.method == "POST":
             if 'audioStorage' in request.files:
@@ -155,12 +155,12 @@ def create_app():
                 output = chargeBot(question)
                 question = filename
             else:
-                question = request.form.get("question")
+                question = request.form.get("messageInput")
                 
                 if not question:
                     return jsonify({'error': 'Question is required.'}), 400
                 
-            output = chargeBot(question)
+                output = chargeBot(question)
             
             try:
                 with sqlite3.connect('database.db') as conn:

@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startChatForms.forEach(startChatForm => {
         startChatForm.addEventListener('submit', function(event) {
+            console.log("the form data will be submitted")
             //prevents the default form submission, allowing custom handling of the form data
             event.preventDefault(); // Prevent the default form submission
         
@@ -83,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 route = '/start_chat_page';
             } else if (value.value === "2") {
                 route = '/chat_page';
+                console.log("fetching to the /chat_page route");
             }
             // Create an AJAX request
             fetch(route, {
@@ -132,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let audioChunks = [];
             document.getElementById("recordButton").style.display = 'none';
             document.getElementById("againButton").style.display = 'none';
+            document.getElementById('audioPlayer').style.display = 'none';
 
             // Request microphone access
             try {
@@ -214,5 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const fileInput = document.getElementById('audioStorage');
         fileInput.value = '';  // Clearing the file input value
     });
-    
+
+    //function to display a redirection button to the homepage after 15 minutes of inactivity 
 });
