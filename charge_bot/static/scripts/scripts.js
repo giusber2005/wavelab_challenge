@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //updating the chat with new messages
     const chatMessages = document.getElementById('chatMessages');
-    const messageInput = document.getElementById('messageInput');
-    const sendButton = document.getElementById('sendButton');
 
     function addMessage(text, user = true) {
         const messageDiv = document.createElement('div');
@@ -76,6 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Prepare the form data
             //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
+            if (formData.get("messageInput")) {
+                addMessage(formData.get("messageInput"));
+            } else {
+                const file = formData.get("audioStorage");
+                if (file) {               
+                    addAudioMessage(file.name);
+                } else {
+                    console.log("no audio file");
+                }
+            }
             //empty variable to store the URL to which the request will be sent
             let route = '';
     
@@ -107,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.redirect) {
                     // Redirect to the specified URL
                     window.location.href = data.redirect;
+                } else if (data.message) {
+                    console.log("the machine has generated some answers")
+                    addMessage(data.message, false);
                 }
             })
             .catch(error => {
@@ -218,5 +229,43 @@ document.addEventListener('DOMContentLoaded', () => {
         fileInput.value = '';  // Clearing the file input value
     });
 
-    //function to display a redirection button to the homepage after 15 minutes of inactivity 
+    //function to display a redirection button to the homepage after 15 minutes of inactivity
+
+    //series of document event listener to detect any touch in the screen, movements with the pointer or pressing any key 
+    //this ensure to restart the timer when any of this event is triggered
+    document.addEventListener('keydown', (event) => {
+        startOrResetInterval();
+        console.log("the timeout has been resetted");
+    });
+
+    document.addEventListener('touchstart', (event) => {
+        startOrResetInterval();
+        console.log("the timeout has been resetted");
+    });
+
+    document.addEventListener('wheel', (event) => {
+        startOrResetInterval();
+        console.log("the timeout has been resetted");
+    });
+
+    //event to repeat any 15 minutes 
+    let intervalId;
+
+    function homepage() {
+        console.log("redirecting to the start_chat_page url");
+        window.location.replace('/');
+    };
+
+    function startOrResetInterval() {
+        // Clear the existing interval if it exists
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+
+        // Set up the new interval
+        const interval = 15 * 60 * 1000; // 15 minutes
+        intervalId = setInterval(homepage, interval);
+    }
+
+    startOrResetInterval();
 });

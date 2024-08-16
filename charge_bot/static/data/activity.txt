@@ -50,7 +50,7 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 25.78
 
-Name: Castel Flavon/Haselburg Run: 10,9 km
+Name: Night-Run: 3,0 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
@@ -64,7 +64,7 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 2.66
 
-Name: Night-Run: 3,0 km
+Name: Castel Flavon/Haselburg Run: 10,9 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
@@ -431,25 +431,25 @@ Distance in km from the EV station: 0.91
 Name: None
 Description: None
 Contact Information:
-  Url: https://www.bolzanofestivalbozen.eu/en/home-en/
+  Url: http://www.bolzano-bozen.it/en/guided-travel-guides.htm
   City: Bolzano Bozen
-  Address: Via dei Portici-Laubengasse 19A
+  Address: piazza del Grano - Kornplatz 11
   ZipCode: 39100
   Language: en
   CountryCode: IT
-Distance in km from the EV station: 2.9
+Distance in km from the EV station: 2.88
 
 Name: wheather forecast
 Description: weather forecast of the next 3 hours
 Contact Information:
-  Date: 2024-08-12T04:00:00+00:00
-  Temperature: 22.4
+  Date: 2024-08-17T04:00:00+00:00
+  Temperature: 21.4
   PrecipitationProbability: 1
   Precipitation: 0.0
   WeatherCode: b
   WeatherDesc: partly cloudy
   WeatherDescription: None
   WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
-  WindDirection: 0
+  WindDirection: 15
   WindSpeed: 1
 

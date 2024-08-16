@@ -179,7 +179,7 @@ def create_app():
                 return jsonify({'error': f'An error occurred: {e}'}), 500
 
             # Return JSON response with redirection URL
-            return jsonify({'redirect': '/chat_page', 'message': 'Chat recorded successfully!'})
+            return jsonify({'message': output})
         
         return render_template("chat.html")
     

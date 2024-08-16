@@ -135,7 +135,7 @@ def create_text_actEv(activity,location,good_quality_data:dict, key):
     if len(activity['Items'])>0:
         for id in range(len(activity['Items'])):
             try:
-                name = activity['Items'][id]['Detail']['en'][key]  #'Title' #'BaseText'
+                name = activity['Items'][id]['Detail']['en'][key]
             except KeyError:
                 continue
             location_act = activity['Items'][id]['GpsInfo'][0]
@@ -187,6 +187,12 @@ def generate_text(data):
             
         lines.append("\n")
     return ''.join(lines)
+
+#function to get the geolocation of the EV station
+def get_ip_geolocation():
+    response = requests.get('https://ipinfo.io/json')
+    data = response.json()
+    return data['loc']  # Returns a string like "37.7749,-122.4194"
 
 def openData():
     
