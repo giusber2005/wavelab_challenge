@@ -18,7 +18,9 @@
             <form enctype="multipart/form-data" action="/chat_page" method="post" class="startChatForm">
                 <input type="hidden" id="value" value="2">
                 <input type="text" id="messageInput" name="messageInput" class="search-bar" placeholder="Type a message..." required>
-                <button type="submit" id="sendButton">Send</button>
+                 <div class='messageContainer'>
+                    <button type="submit" id="sendButton">Send</button>
+                 </div>
             </form>
         </div>
 
@@ -39,7 +41,9 @@
         <form enctype="multipart/form-data" action="/start_chat_page" id="audioForm" class="startChatForm" method="post" style="display: none">
             <input type="hidden" id="value" value="2">
             <input type="file" id="audioStorage" name="audioStorage" accept="audio/*" style="display: none">
-            <input type="submit" id="submit_button" class="start-button" value="Send audio" style="margin: 10px">
+            <div class='audioContainer'>
+                <input type="submit" id="submit_button" class="start-button" value="Send audio" style="margin: 10px">
+            </div>
         </form>
     </div>
 
