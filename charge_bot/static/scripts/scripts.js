@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
             // Show the spinner
             document.getElementById('loadingWheel').style.display = 'block';
+
+            //change the send button with a loading button 
+            document.querySelector("messageContainer").innerHTML ;
                             
             document.getElementById('audioForm').style.display = 'none';
             document.getElementById("againButton").style.display = 'none';
