@@ -76,10 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(this);
             if (formData.get("messageInput")) {
                 addMessage(formData.get("messageInput"));
+                document.querySelector('messageContainer').innerHTML = '';
+                //insert the loading wheel inside this innerHTML
+                document.querySelector('messageContainer').innerHTML = '';
             } else {
                 const file = formData.get("audioStorage");
                 if (file) {               
                     addAudioMessage(file.name);
+                    document.querySelector('audioContainer').innerHTML = '';
+                    //insert the loading wheel inside this innerHTML
+                    document.querySelector('audioContainer').innerHTML = '';
                 } else {
                     console.log("no audio file");
                 }
@@ -127,6 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .finally(() => {
                 // Hide the spinner
                 document.getElementById('loadingWheel').style.display = 'none';
+                //reinsert the send button at the place of the loadingWheel 
+                document.querySelector('').innerHTML = '';
             });
         });
     });
