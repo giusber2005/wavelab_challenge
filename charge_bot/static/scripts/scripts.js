@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("delButton").style.display = 'none';
             document.getElementById('audioPlayer').style.display = 'none';
 
+            let containerContent = '';
+            let container = ''; 
+
             // Prepare the form data
             //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
@@ -75,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 addMessage(formData.get("messageInput"));
                 //insert the loading wheel inside this innerHTML
                 container = document.querySelector('.messageContainer');
+                console.log(container.innerHTML);
                 containerContent = document.querySelector('.messageContainer').innerHTML;
-                container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
+                container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="margin: 20px">
                                             <span class="sr-only">Loading...</span>
                                         </div>`;
             } else {
@@ -84,11 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (file) {               
                     addAudioMessage(file.name);
                     //insert the loading wheel inside this innerHTML
-                    container = document.querySelector('.audioContainer');
-                    containerContent = document.querySelector('.audioContainer').innerHTML;
-                    container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>`;
+                    document.getElementById('loadingWheel').style.display = 'block'
                 } else {
                     console.log("no audio file");
                 }
@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .finally(() => {
                 //reinsert the send button at the place of the loadingWheel 
                 container.innerHTML = containerContent;
+                document.getElementById('loadingWheel').style.display = 'none'
             });
         });
     });
@@ -278,3 +279,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startOrResetInterval();
 });
+
+

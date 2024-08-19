@@ -50,13 +50,6 @@ Contact Information:
   Language: en
 Distance in km from the EV station: 25.78
 
-Name: Castel Flavon/Haselburg Run: 10,9 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
 Name: Oswald Run: 7,3 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
@@ -65,6 +58,13 @@ Contact Information:
 Distance in km from the EV station: 2.66
 
 Name: Night-Run: 3,0 km
+Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
+Contact Information:
+  Url: http://www.bolzano-bozen.it
+  Language: en
+Distance in km from the EV station: 2.64
+
+Name: Castel Flavon/Haselburg Run: 10,9 km
 Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
 Contact Information:
   Url: http://www.bolzano-bozen.it
@@ -453,14 +453,14 @@ Distance in km from the EV station: 2.88
 Name: wheather forecast
 Description: weather forecast of the next 3 hours
 Contact Information:
-  Date: 2024-08-19T16:00:00+00:00
-  Temperature: 26.6
+  Date: 2024-08-19T22:00:00+00:00
+  Temperature: 22.6
   PrecipitationProbability: 1
   Precipitation: 0.0
   WeatherCode: c
   WeatherDesc: cloudy
   WeatherDescription: None
   WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_3.png
-  WindDirection: 355
-  WindSpeed: 3
+  WindDirection: 10
+  WindSpeed: 1
 
