@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById("delButton").style.display = 'none';
                 document.getElementById('audioForm').style.display = 'none';
                 
-                
+                document.querySelector('audioContainer') = '';
 
                 mediaRecorder.ondataavailable = (event) => {
                     audioChunks.push(event.data);
@@ -173,6 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mediaRecorder.onstop = () => {
                     document.getElementById('audioForm').style.display = 'block';
                     document.getElementById('loadingWheel').style.display = 'none';
+                    
+                    document.querySelector('audioContainer') = '';
                     
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const audioUrl = URL.createObjectURL(audioBlob);
