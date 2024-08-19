@@ -62,10 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("the form data will be submitted")
             //prevents the default form submission, allowing custom handling of the form data
             event.preventDefault(); // Prevent the default form submission
-        
-            // Show the spinner
-            document.getElementById('loadingWheel').style.display = 'block';
-                            
+
             document.getElementById('audioForm').style.display = 'none';
             document.getElementById("againButton").style.display = 'none';
             document.getElementById("delButton").style.display = 'none';
@@ -77,13 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (formData.get("messageInput")) {
                 addMessage(formData.get("messageInput"));
                 //insert the loading wheel inside this innerHTML
-                document.querySelector('messageContainer').innerHTML = '';
+                container = document.querySelector('.messageContainer');
+                containerContent = document.querySelector('.messageContainer').innerHTML;
+                container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>`;
             } else {
                 const file = formData.get("audioStorage");
                 if (file) {               
                     addAudioMessage(file.name);
                     //insert the loading wheel inside this innerHTML
-                    document.querySelector('audioContainer').innerHTML = '';
+                    container = document.querySelector('.audioContainer');
+                    containerContent = document.querySelector('.audioContainer').innerHTML;
+                    container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="display: none; margin: 20px">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>`;
                 } else {
                     console.log("no audio file");
                 }
@@ -120,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Redirect to the specified URL
                     window.location.href = data.redirect;
                 } else if (data.message) {
-                    console.log("the machine has generated some answers")
+                    console.log("the machine has generated some answers");
                     addMessage(data.message, false);
                 }
             })
@@ -129,10 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error:', error);
             })
             .finally(() => {
-                // Hide the spinner
-                document.getElementById('loadingWheel').style.display = 'none';
                 //reinsert the send button at the place of the loadingWheel 
-                document.querySelector('').innerHTML = '';
+                container.innerHTML = containerContent;
             });
         });
     });
@@ -163,9 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('loadingWheel').style.display = 'block';
                 document.getElementById("delButton").style.display = 'none';
                 document.getElementById('audioForm').style.display = 'none';
-                
-                document.querySelector('audioContainer') = '';
-
+            
                 mediaRecorder.ondataavailable = (event) => {
                     audioChunks.push(event.data);
                 };
@@ -173,9 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mediaRecorder.onstop = () => {
                     document.getElementById('audioForm').style.display = 'block';
                     document.getElementById('loadingWheel').style.display = 'none';
-                    
-                    document.querySelector('audioContainer') = '';
-                    
+                                        
                     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                     const audioUrl = URL.createObjectURL(audioBlob);
 

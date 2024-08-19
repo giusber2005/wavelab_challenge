@@ -453,14 +453,14 @@ Distance in km from the EV station: 2.88
 Name: wheather forecast
 Description: weather forecast of the next 3 hours
 Contact Information:
-  Date: 2024-08-19T13:00:00+00:00
-  Temperature: 25.9
-  PrecipitationProbability: 10
-  Precipitation: 0.1
+  Date: 2024-08-19T16:00:00+00:00
+  Temperature: 26.6
+  PrecipitationProbability: 1
+  Precipitation: 0.0
   WeatherCode: c
   WeatherDesc: cloudy
   WeatherDescription: None
   WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_3.png
-  WindDirection: 5
-  WindSpeed: 2
+  WindDirection: 355
+  WindSpeed: 3
 
