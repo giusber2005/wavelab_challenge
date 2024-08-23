@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startChatForms =  document.querySelectorAll('.startChatForm');
 
+    let containerContent = '';
+    let container = ''; 
+
     startChatForms.forEach(startChatForm => {
         startChatForm.addEventListener('submit', function(event) {
             console.log("the form data will be submitted")
@@ -68,18 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("delButton").style.display = 'none';
             document.getElementById('audioPlayer').style.display = 'none';
 
-            let containerContent = '';
-            let container = ''; 
-
             // Prepare the form data
             //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
-            if (formData.get("messageInput")) {
-                addMessage(formData.get("messageInput"));
+            if (formData.get("messageInput") || formData.get("question")) {
+                const messageInput = formData.get("messageInput") || formData.get("question");
+                addMessage(messageInput);
+
                 //insert the loading wheel inside this innerHTML
                 container = document.querySelector('.messageContainer');
-                console.log(container.innerHTML);
                 containerContent = document.querySelector('.messageContainer').innerHTML;
+                console.log(containerContent);
                 container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="margin: 20px">
                                             <span class="sr-only">Loading...</span>
                                         </div>`;
@@ -135,8 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .finally(() => {
                 //reinsert the send button at the place of the loadingWheel 
-                container.innerHTML = containerContent;
-                document.getElementById('loadingWheel').style.display = 'none'
+                document.getElementById('loadingWheel').style.display = 'none';
+                if (containerContent != '') {
+                    container.innerHTML = containerContent;
+                    console.log(container.innerHTML);
+                }
             });
         });
     });
