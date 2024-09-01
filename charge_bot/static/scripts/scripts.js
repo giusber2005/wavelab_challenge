@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
     }
 
+    function dynAddAudioMessage(audio, user = true) {
+        const messageDiv = document.createElement('div');
+
+        const audioURL = URL.createObjectURL(audio);
+
+        messageDiv.className = `message ${user ? 'user' : 'other'}`;
+        messageDiv.innerHTML = `<audio controls class="message-text message-audio">
+                                    <source src="${audioURL}" type="audio/wav">
+                                </audio>`;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;   
+    }
+
     fetch('/check-database')
     .then(response => response.json())
     .then(data => {
@@ -67,15 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); // Prevent the default form submission
 
             document.getElementById('audioForm').style.display = 'none';
-            document.getElementById("againButton").style.display = 'none';
-            document.getElementById("delButton").style.display = 'none';
+            document.getElementById('againButton').style.display = 'none';
+            document.getElementById('delButton').style.display = 'none';
             document.getElementById('audioPlayer').style.display = 'none';
+
+            let filename = '';
 
             // Prepare the form data
             //this refers to the form being submitted, which will be sent in the AJAX request
             const formData = new FormData(this);
-            if (formData.get("messageInput") || formData.get("question")) {
-                const messageInput = formData.get("messageInput") || formData.get("question");
+            document.getElementById("recordButton").style.display = "none";
+            if (formData.get("messageInput")) {
+                const messageInput = formData.get("messageInput");
                 addMessage(messageInput);
 
                 //insert the loading wheel inside this innerHTML
@@ -85,10 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="margin: 20px">
                                             <span class="sr-only">Loading...</span>
                                         </div>`;
+
+            } else if (formData.get("question")) {
+                //insert the loading wheel inside this innerHTML
+                container = document.querySelector('.messageContainer');
+                containerContent = document.querySelector('.messageContainer').innerHTML;
+                console.log(containerContent);
+                container.innerHTML = `<div class="spinner-grow" id="loadingWheel" role="status" style="margin: 20px">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>`;
             } else {
                 const file = formData.get("audioStorage");
-                if (file) {               
-                    addAudioMessage(file.name);
+                if (file) {     
+                    addAudioMessage(file.name)       
                     //insert the loading wheel inside this innerHTML
                     document.getElementById('loadingWheel').style.display = 'block'
                 } else {
