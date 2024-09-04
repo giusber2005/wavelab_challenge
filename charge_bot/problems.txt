@@ -1,0 +1,3 @@
+PROBLEMS IN THE DEVELOPMENT OF CHARGEBOT 
+ resolve the spinning wheel problems 
+ 
