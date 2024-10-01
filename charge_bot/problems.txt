@@ -1,3 +1,4 @@
 PROBLEMS IN THE DEVELOPMENT OF CHARGEBOT 
- resolve the spinning wheel problems 
- 
+    add security protection to avoid empty messages
+    disable all inputs and buttons during the submissions
+    scroll down to the botton when a new message is inserted

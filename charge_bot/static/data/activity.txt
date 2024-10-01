@@ -1,83 +1,5 @@
 Time availabe before the full charge of the car':3
 
-Name: Ropeless
-Description: Whatever weather, indoor climbing enables you to improve your climbing skills all year! All information about  • difficulty levels and • opening hours and  • how to arrive.
-Contact Information:
-  Url: http://www.ropeless.it/
-  Language: en
-Distance in km from the EV station: 1.27
-
-Name: The Salewa Cube indoor climbing gym
-Description: Whatever weather, indoor climbing enables you to improve your climbing skills all year! All information about  • difficulty levels and • opening hours and  • how to arrive.
-Contact Information:
-  Url: http://www.salewa-cube.com/en/
-  City: Bolzano/Bozen
-  Email: info@salewa-cube.com
-  Address: Waltraud-Gebert-Deeg-Str. 
-  ZipCode: 39100
-  Language: en
-  CompanyName: Salewa Cube
-  CountryCode: IT
-  CountryName: Italy
-  Phonenumber: +39 0471 188 6867
-Distance in km from the EV station: 1.54
-
-Name: Outdoor swimming pool
-Description: Relaxation and fun in the water → Discover the great swimming pools in south tyrol! All information about • opening times • season start & end and • how to arrive.
-Contact Information:
-  Url: http://www.gemeinde.bozen.it
-  Language: en
-Distance in km from the EV station: 1.76
-
-Name: Wine & bike: The Wine Road
-Description: Explore South Tyrol by bicycle! → Enjoy • untouched nature • the amazing alpine landscape and • countless cycling tours on the mountain or in the valley!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 1.97
-
-Name: From San Giacomo/St. Jakob to Flavon Castle
-Description: Enjoy the alpine landscape of South Tyrol while hiking. Get online hiking tips and all information about • weather • trail descriptions • GPS track and • how to arrive.
-Contact Information:
-  Url: http://www.leifers-info.it
-  Language: en
-Distance in km from the EV station: 2.24
-
-Name: From Bolzano to Merano
-Description: Explore South Tyrol by bicycle! → Enjoy • untouched nature • the amazing alpine landscape and • countless cycling tours on the mountain or in the valley!
-Contact Information:
-  Url: https://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 25.78
-
-Name: Night-Run: 3,0 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
-Name: Oswald Run: 7,3 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.66
-
-Name: Castel Flavon/Haselburg Run: 10,9 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
-Name: Bridges tour: 6,3 km
-Description: Keep yourself fit and healthy and enjoy the great landscape and pure nature of South Tyrol! → Find all information about • duration • length and • altitude difference!
-Contact Information:
-  Url: http://www.bolzano-bozen.it
-  Language: en
-Distance in km from the EV station: 2.64
-
 Name: Flavon/Haselburg Castle
 Description: Castles & palaces tell stories from long ago. Flavon/Haselburg Castle → Here you can find all historical information and details on how to arrive!
 Contact Information:
@@ -431,25 +353,47 @@ Distance in km from the EV station: 0.91
 Name: None
 Description: None
 Contact Information:
-  Url: https://www.iceman.it/
-  City: Bolzano/Bozen
-  Address: Via Museo / Museumstraße 43
+  Url: http://www.bolzano-bozen.it/en/guided-travel-guides.htm
+  City: Bolzano Bozen
+  Address: Piazza Gries /Grieser Platz 21
   ZipCode: 39100
   Language: en
   CountryCode: IT
-Distance in km from the EV station: 2.7
+Distance in km from the EV station: 2.72
+
+Name: Conversazione in lingua inglese sul tema della letteratura anglosassone
+Description: None
+Contact Information:
+  City: Bozen/Bolzano
+  Address: Cappuccini street, 28, 39100 Bolzano BZ 
+  ZipCode: 39100
+  Language: en
+  CompanyName: Multilingual Centre
+  CountryCode: IT
+Distance in km from the EV station: 2.44
+
+Name: "Schloss Tirol-Castel Tirolo. Smart histories" con gli autori Tanja Cassitti, Mirko Freiner, Sonja Steger. Introduzione di Leo Andergassen direttore del Museo provinciale di Castel Tirolo.
+Description: None
+Contact Information:
+  City: Bozen/Bolzano
+  Address: Cappuccini street, 28, 39100 Bolzano BZ 
+  ZipCode: 39100
+  Language: en
+  CompanyName: Lab 3 - EN
+  CountryCode: IT
+Distance in km from the EV station: 2.44
 
 Name: wheather forecast
 Description: weather forecast of the next 3 hours
 Contact Information:
-  Date: 2024-09-01T10:00:00+00:00
-  Temperature: 25.8
+  Date: 2024-10-01T16:00:00+00:00
+  Temperature: 17.2
   PrecipitationProbability: 1
   Precipitation: 0.0
-  WeatherCode: b
-  WeatherDesc: partly cloudy
+  WeatherCode: e
+  WeatherDesc: overcast
   WeatherDescription: None
-  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_2.png
-  WindDirection: 235
-  WindSpeed: 1
+  WeatherImgUrl: https://daten.buergernetz.bz.it/services/weather/graphics/icons/imgsource/wetter/icon_5.png
+  WindDirection: 335
+  WindSpeed: 0
 

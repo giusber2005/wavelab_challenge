@@ -13,13 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addAudioMessage(filename, user = true) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${user ? 'user' : 'other'}`;
-        messageDiv.innerHTML = `<audio controls class="message-text message-audio">
-                                    <source src="/audio_folder/${filename}" type="audio/wav">
-                                </audio>`;
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+        if (chatMessages) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${user ? 'user' : 'other'}`;
+            messageDiv.innerHTML = `<audio controls class="message-text message-audio">
+                                        <source src="/audio_folder/${filename}" type="audio/wav">
+                                    </audio>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+        }
     }
 
     function dynAddAudioMessage(audio, user = true) {
@@ -112,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </div>`;
             } else {
                 const file = formData.get("audioStorage");
-                if (file) {     
-                    addAudioMessage(file.name)       
+                if (file) {    
+                    addAudioMessage(file.name);
                     //insert the loading wheel inside this innerHTML
-                    document.getElementById('loadingWheel').style.display = 'block'
+                    document.getElementById('loadingWheel').style.display = 'block';
                 } else {
                     console.log("no audio file");
                 }
@@ -163,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .finally(() => {
                 //reinsert the send button at the place of the loadingWheel 
                 document.getElementById('loadingWheel').style.display = 'none';
+                document.getElementById("recordButton").style.display = "inline-block";
                 if (containerContent != '') {
                     container.innerHTML = containerContent;
                     console.log(container.innerHTML);
@@ -311,3 +314,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+recordButton

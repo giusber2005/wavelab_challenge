@@ -89,7 +89,7 @@ def create_app():
     def start_chat():
         if request.method == "POST":
             if 'audioStorage' in request.files:
-                #insert code to convert the audio file in text
+
                 question = request.files['audioStorage']
                 
                 if question.filename == '':
